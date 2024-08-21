@@ -75,10 +75,7 @@
                         <version>3.4.3</version>
                         <configuration>
                             <to>
-                                <image>${docker.hub.address}/${docker.hub.namespace}/${project.artifactId}</image>
-                                <tags>
-                                    <tag>${image.version}</tag>
-                                </tags>
+                                <image>${image.version}</image>
                             </to>
                         </configuration>
                     </plugin>
