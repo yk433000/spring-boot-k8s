@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - image: registry.cn-shanghai.aliyuncs.com/yk433000/spring-boot-k8s
+          name: worker-e2e
+          resources:
+            limits:
+              memory: 500Mi
+              cpu: 50m
