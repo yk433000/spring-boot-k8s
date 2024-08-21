@@ -4,7 +4,7 @@ WORKDIR /code
 
 RUN mkdir -p /root/.m2
 COPY settings.xml /root/.m2/settings.xml
-COPY ../../pom.xml /code/pom.xml
+COPY pom.xml /code/pom.xml
 RUN mvn --batch-mode dependency:resolve
 RUN mvn --batch-mode verify
 
