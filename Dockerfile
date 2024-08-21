@@ -1,18 +1,15 @@
-FROM maven:3.5-jdk-8-alpine AS build
+FROM maven:latest AS build
 
 WORKDIR /code
 
 RUN mkdir -p /root/.m2
 COPY settings.xml /root/.m2/settings.xml
 COPY pom.xml /code/pom.xml
-RUN mvn --batch-mode dependency:resolve
-RUN mvn --batch-mode verify
 
-# Adding source, compile and package into a fat jar
 COPY ["src/main", "/code/src/main"]
 RUN mvn --batch-mode package
 
-FROM openjdk:8-jre-alpine
+FROM eclipse-temurin:17-jdk
 
 COPY --from=build /code/target/*.jar /app.jar
 
