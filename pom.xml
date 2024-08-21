@@ -21,6 +21,7 @@
         <java.version>17</java.version>
         <docker.hub.address>registry.cn-shanghai.aliyuncs.com</docker.hub.address>
         <docker.hub.namespace>yk433000</docker.hub.namespace>
+        <image.version>latest</image.version>
     </properties>
 
     <dependencies>
@@ -76,8 +77,7 @@
                             <to>
                                 <image>${docker.hub.address}/${docker.hub.namespace}/${project.artifactId}</image>
                                 <tags>
-                                    <tag>${project.version}</tag>
-                                    <tag>latest</tag>
+                                    <tag>${image.version}</tag>
                                 </tags>
                             </to>
                         </configuration>
