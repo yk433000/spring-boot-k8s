@@ -19,9 +19,6 @@
 
     <properties>
         <java.version>17</java.version>
-        <docker.hub.address>registry.cn-shanghai.aliyuncs.com</docker.hub.address>
-        <docker.hub.namespace>yk433000</docker.hub.namespace>
-        <image.version>latest</image.version>
     </properties>
 
     <dependencies>
@@ -57,31 +54,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>deploy-docker</id>
-            <properties>
-                <maven.deploy.skip>true</maven.deploy.skip>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.google.cloud.tools</groupId>
-                        <artifactId>jib-maven-plugin</artifactId>
-                        <version>3.4.3</version>
-                        <configuration>
-                            <to>
-                                <image>${image.version}</image>
-                            </to>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
