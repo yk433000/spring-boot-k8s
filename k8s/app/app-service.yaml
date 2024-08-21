@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     - name: "app-service"
-      port: 30005
+      port: 5000
       targetPort: 10001
   selector:
     app: app
@@ -23,7 +23,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: app-e2e-$Namespace$.ko.com
+    - host: app-e2e-10x-$Namespace$.ko.coderover.cn
       http:
         paths:
           - path: /
@@ -32,4 +32,4 @@ spec:
               service:
                 name: app
                 port:
-                  number: 30005
+                  number: 5000
