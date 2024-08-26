@@ -1,16 +1,11 @@
-FROM maven:latest AS build
-
-WORKDIR /code
-
-RUN mkdir -p /root/.m2
-COPY settings.xml /root/.m2/settings.xml
-COPY pom.xml /code/pom.xml
-
-COPY ["src/main", "/code/src/main"]
-RUN mvn --batch-mode package
+FROM eclipse-temurin:17-jdk as builder
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+RUN java -Djarmode=layertools -jar application.jar extract
 
 FROM eclipse-temurin:17-jdk
-
-COPY --from=build /code/target/*.jar /app.jar
-
-CMD ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-jar", "/app.jar"]
+COPY --from=builder dependencies/ ./
+COPY --from=builder snapshot-dependencies/ ./
+COPY --from=builder spring-boot-loader/ ./
+COPY --from=builder application/ ./
+ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]

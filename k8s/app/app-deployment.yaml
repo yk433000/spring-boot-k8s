@@ -3,20 +3,25 @@ kind: Deployment
 metadata:
   labels:
     app: app
-  name: app
+  name: app-rc-origin
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: app
+      version: rc-origin
   template:
     metadata:
       labels:
         app: app
+        version: rc-origin
     spec:
       containers:
         - image: registry.cn-shanghai.aliyuncs.com/yk433000/spring-boot-k8s
-          name: worker-e2e
+          name: app-e2e
+          ports:
+            - containerPort: 10001
+              name: app
           resources:
             limits:
               memory: 500Mi
