@@ -17,9 +17,6 @@
     <name>spring-boot-k8s</name>
     <description>spring-boot-k8s</description>
 
-    <properties>
-        <java.version>17</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
