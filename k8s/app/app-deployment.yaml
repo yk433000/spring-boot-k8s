@@ -17,7 +17,7 @@ spec:
         version: rc-origin
     spec:
       containers:
-        - image: registry.cn-shanghai.aliyuncs.com/yk433000/spring-boot-k8s
+        - image: registry.cn-shanghai.aliyuncs.com/ky-dev/spring-boot-k8s
           name: app-e2e
           ports:
             - containerPort: 10001
