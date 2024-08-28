@@ -24,7 +24,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: app-e2e-10x-$Namespace$.ko.coderover.cn
+    - host: app-$Namespace$.local
       http:
         paths:
           - path: /
