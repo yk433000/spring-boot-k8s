@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - image: registry.cn-shanghai.aliyuncs.com/ky-dev/spring-boot-k8s
-          name: app
+          name: spring-boot-k8s
           ports:
             - containerPort: 10001
               name: app
