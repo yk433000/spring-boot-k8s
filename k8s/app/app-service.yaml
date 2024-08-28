@@ -5,12 +5,12 @@ metadata:
     app: app
   name: app
 spec:
-  type: NodePort
+  #  type: NodePort
   ports:
     - name: "app-service"
       port: 5000
       targetPort: 10001
-      nodePort: 30010
+  #      nodePort: 30010
   selector:
     app: app
     version: rc-origin
