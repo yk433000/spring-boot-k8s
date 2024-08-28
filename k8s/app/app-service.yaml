@@ -10,6 +10,7 @@ spec:
     - name: "app-service"
       port: 5000
       targetPort: 10001
+      nodePort: 30005
   selector:
     app: app
     version: rc-origin
