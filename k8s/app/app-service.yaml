@@ -23,7 +23,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: app-$Namespace$.local
+    - host: 192.168.3.39
       http:
         paths:
           - path: /
