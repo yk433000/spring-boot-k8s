@@ -23,8 +23,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: 192.168.3.39
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
